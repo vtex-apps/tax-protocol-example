@@ -1,0 +1,20 @@
+{
+  "stack": "nodejs",
+  "memory": 512,
+  "ttl": 43200,
+  "timeout": 300,
+  "routes": {
+    "orderTax": {
+      "path": "/app/tax-provider/checkout/order",
+      "public": true
+    },
+    "salesInvoice": {
+      "path": "/app/tax-provider/checkout/invoice",
+      "public": true
+    },
+    "settings": {
+      "path": "/app/tax-provider/checkout/settings/:operation",
+      "public": true
+    }
+  }
+}
