@@ -48,27 +48,17 @@ export const settings = async (ctx: Context) => {
   const {
     clients: { checkout },
     params: { operation },
-    vtex: { account, logger },
+    vtex: { account },
   } = ctx
 
   const orderForm = await checkout.getOrderForm()
 
   if (operation === 'activate') {
-    try {
-      await activateProvider(orderForm, checkout, account)
-    } catch (e) {
-      logger.error(e)
-      ctx.status = 304
-    }
+    await activateProvider(orderForm, checkout, account)
   } else if (operation === 'deactivate') {
-    try {
-      deactivateProvider(orderForm, checkout)
-    } catch (e) {
-      logger.error(e)
-      ctx.status = 304
-    }
+    await deactivateProvider(orderForm, checkout)
   } else {
-    ctx.status = 202
+    ctx.status = 304
   }
   ctx.status = 200
 }
