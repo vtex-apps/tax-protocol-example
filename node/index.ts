@@ -47,6 +47,7 @@ declare global {
   }
 }
 
+// It's possible to check the implementation of each handler in the handlers folder
 export default new Service<Clients, State, ParamsContext>({
   clients,
   routes: {

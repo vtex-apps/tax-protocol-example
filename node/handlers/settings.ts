@@ -41,6 +41,10 @@ const deactivateProvider = async (
 }
 
 export const settings = async (ctx: Context) => {
+  /*
+    This handler is responsible for activating or deactivating the
+    tax service on the order form configuration.
+  */
   const {
     clients: { checkout },
     params: { operation },
