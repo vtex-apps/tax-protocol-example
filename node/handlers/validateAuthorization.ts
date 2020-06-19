@@ -2,7 +2,10 @@ import { ForbiddenError } from '@vtex/api'
 
 import { AUTHORIZATION_CODE } from '../utils/constants'
 
-export const validateAuthorization = (ctx: Context) => {
+export async function validateAuthorization(
+  ctx: Context,
+  next: () => Promise<any>
+) {
   const {
     req: {
       headers: { authorization },
@@ -12,4 +15,6 @@ export const validateAuthorization = (ctx: Context) => {
   if (!authorization || authorization !== AUTHORIZATION_CODE) {
     throw new ForbiddenError('Authorization token does not match')
   }
+
+  await next()
 }
