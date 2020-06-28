@@ -5,16 +5,16 @@
   "timeout": 300,
   "routes": {
     "orderTax": {
-      "path": "/app/tax-provider/checkout/order",
+      "path": "/app/tax-provider/checkout/order-tax",
       "public": true
     },
-    "salesInvoice": {
-      "path": "/app/tax-provider/checkout/invoice",
+    "orderInvoice": {
+      "path": "/app/tax-provider/oms/order-invoice",
       "public": true
     },
     "settings": {
       "path": "/app/tax-provider/checkout/settings/:operation",
-      "public": true
+      "public": false
     }
   }
 }

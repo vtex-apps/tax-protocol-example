@@ -17,26 +17,20 @@
   "credentialType": "absolute",
   "policies": [
     {
-      "name": "outbound-access",
-      "attrs": {
-        "host": "httpstat.us",
-        "path": "*"
-      }
-    },
-    {
-      "name": "colossus-fire-event"
-    },
-    {
-      "name": "colossus-write-logs"
-    },
-    {
       "name": "SaveOrderFormConfiguration"
     },
     {
       "name": "outbound-access",
       "attrs": {
         "host": "api.vtex.com",
-        "path": "/api/*"
+        "path": "/api/checkout/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "api.vtex.com",
+        "path": "/api/logistics/*"
       }
     }
   ],

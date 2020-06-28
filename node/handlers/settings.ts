@@ -15,14 +15,14 @@ export async function settings(ctx: Context) {
     },
   } = ctx
 
-  const orderForm = await checkout.getOrderForm()
+  const orderForm = await checkout.getOrderFormConfiguration()
 
   if (operation === 'activate') {
     await activateProvider(orderForm, checkout, account)
   } else if (operation === 'deactivate') {
     await deactivateProvider(orderForm, checkout)
   } else {
-    ctx.status = 304
+    ctx.status = 400
   }
   ctx.status = 200
   ctx.body = 'Tax configuration has been changed'

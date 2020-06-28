@@ -15,13 +15,13 @@ export async function activateProvider(
   if (orderForm.taxConfiguration) {
     throw new UserInputError('Tax provider already configured')
   }
-  return checkout.setOrderForm({
+  return checkout.setOrderFormConfiguration({
     ...orderForm,
     taxConfiguration: {
       allowExecutionAfterErrors: false,
       authorizationHeader: AUTHORIZATION_CODE,
       integratedAuthentication: false,
-      url: `https://fabiana--${account}.myvtex.com/app/tax-provider/checkout/order`,
+      url: `https://master--${account}.myvtex.com/app/tax-provider/checkout/order`,
     },
   })
 }
@@ -33,7 +33,7 @@ export async function deactivateProvider(
   if (!orderForm.taxConfiguration) {
     throw new UserInputError('Tax provider is not configured')
   }
-  return checkout.setOrderForm({
+  return checkout.setOrderFormConfiguration({
     ...orderForm,
     taxConfiguration: {
       allowExecutionAfterErrors: false,

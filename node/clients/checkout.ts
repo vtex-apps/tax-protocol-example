@@ -10,7 +10,7 @@ export class Checkout extends VtexCommerce {
     super(ctx, 'checkout', options)
   }
 
-  public getOrderForm(tracingConfig?: RequestTracingConfig) {
+  public getOrderFormConfiguration(tracingConfig?: RequestTracingConfig) {
     const metric = 'checkout-getOrderForm'
     return this.http.get<OrderFormConfiguration>(CHECKOUT_ENDPOINT, {
       metric,
@@ -18,7 +18,7 @@ export class Checkout extends VtexCommerce {
     })
   }
 
-  public setOrderForm(
+  public setOrderFormConfiguration(
     body: OrderFormConfiguration,
     tracingConfig?: RequestTracingConfig
   ) {

@@ -18,6 +18,5 @@ export class Logistics extends VtexCommerce {
       metric,
       tracing: createTracing(metric, tracingConfig),
     })
-    // olhar a api do logistics para ver o que tem no dockID
   }
 }
