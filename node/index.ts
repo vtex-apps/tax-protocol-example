@@ -7,10 +7,10 @@ import {
 } from '@vtex/api'
 
 import { Clients } from './clients/index'
-import { orderTax } from './handlers/orderTax'
-import { salesInvoice } from './handlers/salesInvoice'
+import { orderInvoice } from './handlers/orderInvoice'
 import { settings } from './handlers/settings'
-import { validateAuthorization } from './handlers/validateAuthorization'
+import { taxSimulation } from './handlers/taxSimulation'
+import { validateCheckoutAuthorization } from './handlers/validateCheckoutAuthorization'
 
 const TIMEOUT_MS = 800
 
@@ -36,8 +36,8 @@ declare global {
 export default new Service<Clients, RecorderState, ParamsContext>({
   clients,
   routes: {
-    orderTax: [validateAuthorization, orderTax],
-    salesInvoice: [validateAuthorization, salesInvoice],
+    orderInvoice: [validateCheckoutAuthorization, orderInvoice],
     settings,
+    taxSimulation: [validateCheckoutAuthorization, taxSimulation],
   },
 })

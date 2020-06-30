@@ -1,4 +1,4 @@
-export async function salesInvoice(ctx: Context, next: () => Promise<any>) {
+export async function orderInvoice(ctx: Context, next: () => Promise<any>) {
   // This is where the order taxes are committed
 
   ctx.status = 200

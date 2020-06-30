@@ -7,7 +7,16 @@ const CHECKOUT_ENDPOINT = 'pvt/configuration/orderForm'
 
 export class Checkout extends VtexCommerce {
   constructor(ctx: IOContext, options?: InstanceOptions) {
-    super(ctx, 'checkout', options)
+    super(ctx, 'checkout', {
+      ...options,
+      headers: {
+        ...(ctx.adminUserAuthToken
+          ? {
+              VtexIdclientAutCookie: ctx.adminUserAuthToken,
+            }
+          : {}),
+      },
+    })
   }
 
   public getOrderFormConfiguration(tracingConfig?: RequestTracingConfig) {

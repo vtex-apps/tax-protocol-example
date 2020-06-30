@@ -11,7 +11,7 @@ the method that uses the provider API. It will give a response with the
 taxes information. With that, it's necessary to parse it again to the
 format that VTEX expects and this will be assigned to the body
 */
-export async function orderTax(ctx: Context, next: () => Promise<any>) {
+export async function taxSimulation(ctx: Context, next: () => Promise<any>) {
   const body = await json(ctx.req)
 
   const {

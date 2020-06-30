@@ -4,68 +4,109 @@
 
 A reference app implementing a VTEX IO Tax Protocol service.
 
-- Start from `node/index.ts` and follow the comments and imports :)
+## Uses
+This app is an example to be followed in order to develop a tax service integration with VTEX. 
 
-## Recipes
+## Clients
+In this example, there are a few clients implemented for you to use.
+- `Checkout`: used to configure the tax service in the Checkout
+- `Logistics`: it has a single method that can be use to fetch information about docks, using its id.
+- `TaxProvider`: used to connect with the provider's external API.
+- `VtexCommerce`: basic external client that can be used as the class that can be inherited to develop other clients that connectes to VTEX API. 
 
-### Defining routes on _service.json_ 
+## Parsers
+As a way to simplify the logic behind the handlers that are implemented in this example, all the code logic that can be necessary to parse the payloads to a specific format is expected to be implemented inside `parsers` directory. This is necessary because both the external provider API and VTEX API expect specific payload formats. Inside the folder, there are two files, `providerToVtex.ts` and `vtexToProvider.ts`.
+
+### VTEX to Provider
+The provider API will receive a HTTP post request with a well-defined body from the checkout. In case of it expecting a different format, one can implement the loginc inside `vtexToProvider` function. 
+
+An example of the body sent in the checkout post request is:
 ```json
 {
-  "memory": 256,
-  "ttl": 10,
-  "timeout": 2,
-  "minReplicas": 2,
-  "maxReplicas": 4,
-  "routes": {
-    "status": {
-      "path": "/_v/status/:code",
-      "public": true
+  "items":
+  [
+    {
+      "id":"0",
+      "sku":"1",
+      "itemPrice":10,
+      "discountPrice": null,
+      "dockId": "1",
+      "freightPrice": 12
     }
-  }
+  ],
+  "clientData": {
+    "email": "afonso.praca@vtex.com.br"
+  },
+  "shippingDestination":
+  {
+    "country":"USA",
+    "state":"IL",
+    "city":"Chicago",
+    "neighborhood":"North Water St",
+    "street": "4931 E North Water St",
+    "postalCode": "60621"
+  },
+  "orderFormId":"4ab546272a9b4087b56f62f6438f20aa"
 }
 ```
 
-The `service.json` file that sits on the root of the `node` folder holds informations about this service, like the maximum timeout and number of replicas, what might be discontinued on the future, but also **sets its routes**. 
+### Provider to VTEX
+In this example, we focus on a sync request done by the provider to the checkout. In that case, it's also possible to implement a parser in order to put the payload in the format that the checkout expects. One can find an example of the expected format for a sync request:
 
-### Throwing errors
-
-When building a HTTP service, we should follow HTTP rules regarding data types, cache, authorization, and status code. Our example app sets a `ctx.status` value that will be used as a HTTP status code return value, but often we also want to give proper information about errors as well.
-
-The **node-vtex-api** already exports a handful of **custom error classes** that can be used for that purpose, like the `NotFoundError`. You just need to throw them inside one of the the route handlers that the appropriate response will be sent to the server.
-
-```typescript
-import { UserInputError } from '@vtex/api'
-
-export async function validate(ctx: Context, next: () => Promise<any>) {
-  const { code } = ctx.vtex.route.params
-  if (isNaN(code) || code < 100 || code > 600) {
-    throw new UserInputError('Code must be a number between 100 and 600')
-  }
-...
+```json
+[
+    {
+        "id": "0",
+        "taxes": [
+            {
+                "name": "TAX 1",
+                "value": 100
+            }
+        ]
+    }
+]
 ```
 
-You can check all the available errors [here](https://github.com/vtex/node-vtex-api/tree/fd6139349de4e68825b1074f1959dd8d0c8f4d5b/src/errors), but some are not useful for just-HTTP services. Check the most useful ones:
+In case of an async request, the expected format is:
 
-|Error Class | HTTP Code |
-|--|:--:|
-| `UserInputError` | 400 |
-| `AuthenticationError` | 401 |
-| `ForbiddenError` | 403 |
-| `NotFoundError` | 404 |
-
-You can also **create your custom error**, just see how it's done above ;)
-
-### Reading a JSON body
-
-When writing POST or PUT handlers, for example, often you need to have access to the **request body** that comes as a JSON format, which is not provided directly by the handler function.
-
-For this, you have to use the [co-body](https://www.npmjs.com/package/co-body) package that will parse the request into a readable JSON object, used as below: 
-```typescript
-import { json } from 'co-body'
-export async function method(ctx: Context, next: () => Promise<any>) {
-    const body = await json(ctx.req)
+```json
+{
+    "itemTaxResponse": [
+			{
+		    "id": "0",
+		    "taxes": [
+		      {
+		        "name": "TAX 1",
+		        "description": "",
+		        "value": 3.48
+		      },
+		      {
+		        "name": "TAX 2",
+		        "description": "",
+		        "value": 22
+		      }
+		    ]
+		  }
+		],
+    "hooks": [
+        {
+          "major": 1,
+          "url": "http://master--bufferin.myvtex.com/avalara/checkout/salesinvoice-tax"
+        }
+    ]
+}
 ```
 
-### Other example apps
+## Routes
+There are three main routes in this example and they are mainly using mocked values so as to simulate their functions.
 
-We use Node services across all VTEX, and there are a lot inspiring examples. If you want to dive deeper on learning about this subject, don't miss those internal apps: [builder-hub](https://github.com/vtex/builder-hub) or [store-sitemap](https://github.com/vtex-apps/store-sitemap)
+It is important to emphasize that for the first two endpoints to work, you **must** have the tax service configured in your account, which can be done by using the third endpoint explained below.
+
+- `simulation`: responsible for simulating a checkout request for tax calculation.
+- `invoice`: public route to be use to commit the taxes.
+- `settings`: a private route that is responsible for configurating a tax service in a specific account. 
+  > It expects to receive an operation name, which can be `activate` or `deactivate`. 
+
+If you want to test your those routes, it is possible to use this [Postman collection](https://www.getpostman.com/collections/debecab7831841489998).
+
+> **Attention!** The authorization header that it's present in the Postman collection is a mocked value to be correctly validated by the handlers. This value is defined in the `utils/constants.ts` file and it's used to configure the tax service when calling the `settings` endpoint.

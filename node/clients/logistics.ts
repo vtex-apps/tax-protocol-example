@@ -9,7 +9,16 @@ const routes = {
 
 export class Logistics extends VtexCommerce {
   constructor(ctx: IOContext, options?: InstanceOptions) {
-    super(ctx, 'logistics', options)
+    super(ctx, 'logistics', {
+      ...options,
+      headers: {
+        ...(ctx.adminUserAuthToken
+          ? {
+              VtexIdclientAutCookie: ctx.adminUserAuthToken,
+            }
+          : {}),
+      },
+    })
   }
 
   public getDockById(dockId: string, tracingConfig?: RequestTracingConfig) {

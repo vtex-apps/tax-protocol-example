@@ -2,14 +2,12 @@ import { ForbiddenError } from '@vtex/api'
 
 import { AUTHORIZATION_CODE } from '../utils/constants'
 
-export async function validateAuthorization(
+export async function validateCheckoutAuthorization(
   ctx: Context,
   next: () => Promise<any>
 ) {
   const {
-    req: {
-      headers: { authorization },
-    },
+    headers: { authorization },
   } = ctx
 
   if (!authorization || authorization !== AUTHORIZATION_CODE) {

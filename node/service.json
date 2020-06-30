@@ -4,12 +4,12 @@
   "ttl": 43200,
   "timeout": 300,
   "routes": {
-    "orderTax": {
-      "path": "/app/tax-provider/checkout/order-tax",
+    "taxSimulation": {
+      "path": "/app/tax-provider/checkout/simulation",
       "public": true
     },
     "orderInvoice": {
-      "path": "/app/tax-provider/oms/order-invoice",
+      "path": "/app/tax-provider/oms/invoice",
       "public": true
     },
     "settings": {
