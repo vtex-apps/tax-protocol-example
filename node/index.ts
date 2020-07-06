@@ -36,7 +36,7 @@ declare global {
 export default new Service<Clients, RecorderState, ParamsContext>({
   clients,
   routes: {
-    orderInvoice: [validateCheckoutAuthorization, orderInvoice],
+    orderInvoice: [orderInvoice],
     settings,
     taxSimulation: [validateCheckoutAuthorization, taxSimulation],
   },

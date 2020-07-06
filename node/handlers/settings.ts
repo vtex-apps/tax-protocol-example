@@ -10,6 +10,7 @@ export async function settings(ctx: Context) {
     clients: { checkout },
     vtex: {
       account,
+      workspace,
       route: {
         params: { operation },
       },
@@ -19,7 +20,7 @@ export async function settings(ctx: Context) {
   const orderForm = await checkout.getOrderFormConfiguration()
 
   if (operation === 'activate') {
-    await activateProvider(orderForm, checkout, account)
+    await activateProvider(orderForm, checkout, account, workspace)
   } else if (operation === 'deactivate') {
     await deactivateProvider(orderForm, checkout)
   } else {

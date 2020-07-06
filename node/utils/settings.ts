@@ -7,10 +7,12 @@ import { AUTHORIZATION_CODE } from './constants'
  * so as to activate the tax configuration on a specific
  * account
  */
+// eslint-disable-next-line max-params
 export async function activateProvider(
   orderForm: OrderFormConfiguration,
   checkout: Checkout,
-  account: string
+  account: string,
+  workspace: string
 ) {
   if (orderForm.taxConfiguration) {
     throw new UserInputError('Tax provider already configured')
@@ -21,7 +23,7 @@ export async function activateProvider(
       allowExecutionAfterErrors: false,
       authorizationHeader: AUTHORIZATION_CODE,
       integratedAuthentication: false,
-      url: `https://master--${account}.myvtex.com/app/tax-provider/checkout/order`,
+      url: `https://${workspace}--${account}.myvtex.com/app/tax-provider/checkout/simulation`,
     },
   })
 }

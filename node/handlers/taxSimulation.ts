@@ -15,6 +15,7 @@ export async function taxSimulation(ctx: Context, next: () => Promise<any>) {
   const body = await json(ctx.req)
 
   const {
+    vtex: { workspace, account },
     clients: { taxProvider },
   } = ctx
 
@@ -24,7 +25,21 @@ export async function taxSimulation(ctx: Context, next: () => Promise<any>) {
   const payload = taxProvider.getTaxInformation(orderInformation)
 
   // Parsing the tax information that was retrieved to the correct format
-  ctx.body = parseProviderToVtex(payload)
+  const expectedResponse = parseProviderToVtex(payload)
+
+  // Mounting the response body
+  ctx.body = {
+    hooks: [
+      {
+        major: 1,
+        url: `https://${workspace}--${account}.myvtex.com/app/tax-provider/oms/invoice`,
+      },
+    ],
+    itemTaxResponse: expectedResponse,
+  }
+
+  // Necessary so the Checkout can understand body's format
+  ctx.set('Content-Type', 'application/vnd.vtex.checkout.minicart.v1+json')
 
   await next()
 }
