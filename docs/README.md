@@ -9,9 +9,9 @@ This app is an example to be followed in order to develop a tax service integrat
 
 ## Clients
 In this example, there are a few clients implemented for you to use.
-- `Checkout`: used to configure the tax service in the Checkout
-- `Logistics`: it has a single method that can be use to fetch information about docks, using its id.
-- `TaxProvider`: used to connect with the provider's external API.
+- `Checkout`: used to configure the tax service in the Checkout
+- `Logistics`: it has a single method that can be use to fetch information about docks, using its id.
+- `TaxProvider`: used to connect with the provider's external API.
 - `VtexCommerce`: basic external client that can be used as the class that can be inherited to develop other clients that connectes to VTEX API. 
 
 ## Parsers
@@ -105,8 +105,8 @@ It is important to emphasize that for the first two endpoints to work, you **mus
 - `simulation`: responsible for simulating a checkout request for tax calculation.
 - `invoice`: public route to be use to commit the taxes.
 - `settings`: a private route that is responsible for configurating a tax service in a specific account. 
-  > It expects to receive an operation name, which can be `activate` or `deactivate`. 
+  > It expects to receive an operation name, which can be `activate` or `deactivate`.
 
 If you want to test your those routes, it is possible to use this [Postman collection](https://www.getpostman.com/collections/debecab7831841489998).
 
-> **Attention!** The authorization header that it's present in the Postman collection is a mocked value to be correctly validated by the handlers. This value is defined in the `utils/constants.ts` file and it's used to configure the tax service when calling the `settings` endpoint.
+> **Attention!** The authorization header that it's present in the Postman collection is a mocked value to be correctly validated by the handlers. This value is defined in the `utils/constants.ts` file and it's used to configure the tax service when calling the `settings` endpoint.
