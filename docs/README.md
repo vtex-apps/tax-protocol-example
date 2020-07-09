@@ -51,7 +51,7 @@ An example of the body sent in the checkout post request is:
 ```
 
 ### Provider to VTEX
-In this example, we focus on a sync request done by the provider to the checkout. In that case, it's also possible to implement a parser in order to put the payload in the format that the checkout expects. One can find an example of the expected format:
+Considering the request done by the provider to the VTEX Checkout API, it's also possible to implement a parser in order to put the payload in the format that the checkout expects. One can find an example of the expected format:
 
 ```json
 {
