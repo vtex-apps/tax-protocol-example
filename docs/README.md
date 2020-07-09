@@ -87,7 +87,7 @@ There are three main routes in this example and they are mainly using mocked val
 It is important to emphasize that for the first two endpoints to work, you **must** have the tax service configured in your account, which can be done by using the third endpoint explained below.
 
 - `taxSimulation`: responsible for simulating a Checkout request for tax calculation.
-- `orderInvoice`: public route to be use to commit the taxes.
+- `orderInvoice`: public route to send the taxes.
 - `settings`: a private route that is responsible for configurating a tax service in a specific account. 
   > It expects to receive an operation name, which can be `activate` or `deactivate`.
 
