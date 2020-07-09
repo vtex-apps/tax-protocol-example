@@ -9,9 +9,9 @@ This app is an example to be followed in order to develop a tax service integrat
 
 ## Clients
 In this example, there are a few clients implemented for you to use.
-- `Checkout`: used to configure the tax service in the Checkout
-- `Logistics`: it has a single method that can be use to fetch information about docks, using its id.
-- `TaxProvider`: used to connect with the provider's external API.
+- `Checkout`: used to configure the tax service in the Checkout
+- `Logistics`: it has a single method that can be used to fetch information about docks.
+- `TaxProvider`: used to connect with the provider's external API.
 - `VtexCommerce`: basic external client that can be used as the class that can be inherited to develop other clients that connectes to VTEX API. 
 
 ## Parsers
@@ -51,23 +51,7 @@ An example of the body sent in the checkout post request is:
 ```
 
 ### Provider to VTEX
-In this example, we focus on a sync request done by the provider to the checkout. In that case, it's also possible to implement a parser in order to put the payload in the format that the checkout expects. One can find an example of the expected format for a sync request:
-
-```json
-[
-    {
-        "id": "0",
-        "taxes": [
-            {
-                "name": "TAX 1",
-                "value": 100
-            }
-        ]
-    }
-]
-```
-
-In case of an async request, the expected format is:
+Considering the request done by the provider to the VTEX Checkout API, it's also possible to implement a parser in order to put the payload in the format that the checkout expects. One can find an example of the expected format:
 
 ```json
 {
@@ -91,7 +75,7 @@ In case of an async request, the expected format is:
     "hooks": [
         {
           "major": 1,
-          "url": "http://master--bufferin.myvtex.com/avalara/checkout/salesinvoice-tax"
+          "url": "https://master--bufferin.myvtex.com/app/tax-provider/oms/invoice"
         }
     ]
 }
@@ -102,11 +86,11 @@ There are three main routes in this example and they are mainly using mocked val
 
 It is important to emphasize that for the first two endpoints to work, you **must** have the tax service configured in your account, which can be done by using the third endpoint explained below.
 
-- `simulation`: responsible for simulating a checkout request for tax calculation.
-- `invoice`: public route to be use to commit the taxes.
+- `taxSimulation`: responsible for simulating a Checkout request for tax calculation.
+- `orderInvoice`: public route to send the taxes.
 - `settings`: a private route that is responsible for configurating a tax service in a specific account. 
-  > It expects to receive an operation name, which can be `activate` or `deactivate`. 
+  > It expects to receive an operation name, which can be `activate` or `deactivate`.
 
 If you want to test your those routes, it is possible to use this [Postman collection](https://www.getpostman.com/collections/debecab7831841489998).
 
-> **Attention!** The authorization header that it's present in the Postman collection is a mocked value to be correctly validated by the handlers. This value is defined in the `utils/constants.ts` file and it's used to configure the tax service when calling the `settings` endpoint.
+> **Attention!** The authorization header that it's present in the Postman collection is a mocked value to be correctly validated by the handlers. This value is defined in the `utils/constants.ts` file and it's used to configure the tax service when calling the `settings` endpoint.
