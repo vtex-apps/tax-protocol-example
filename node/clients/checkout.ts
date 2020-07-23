@@ -29,10 +29,14 @@ export class Checkout extends VtexCommerce {
 
   public setOrderFormConfiguration(
     body: OrderFormConfiguration,
+    userToken: string,
     tracingConfig?: RequestTracingConfig
   ) {
     const metric = 'checkout-setOrderForm'
     return this.http.post(CHECKOUT_ENDPOINT, body, {
+      headers: {
+        VtexIdclientAutCookie: userToken,
+      },
       metric,
       tracing: createTracing(metric, tracingConfig),
     })
