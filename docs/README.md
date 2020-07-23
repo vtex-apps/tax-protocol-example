@@ -134,6 +134,6 @@ It is important to emphasize that for the first two endpoints to work, you **mus
 - `settings`: a private route that is responsible for configurating a tax service in a specific account. 
   > It expects to receive an operation name, which can be `activate` or `deactivate`.
 
-If you want to test your those routes, it is possible to use this [Postman collection](https://www.getpostman.com/collections/debecab7831841489998).
+If you want to test your those routes, it is possible to use this [Postman collection](https://www.getpostman.com/collections/6321a1b18cde612dc027).
 
 > **Attention!** The authorization header that it's present in the Postman collection is a mocked value to be correctly validated by the handlers. This value is defined in the `utils/constants.ts` file and it's used to configure the tax service when calling the `settings` endpoint.

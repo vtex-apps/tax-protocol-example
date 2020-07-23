@@ -1,3 +1,5 @@
+import { AuthenticationError, UserInputError } from '@vtex/api'
+
 import { activateProvider, deactivateProvider } from '../utils/settings'
 
 export async function settings(ctx: Context) {
@@ -17,14 +19,20 @@ export async function settings(ctx: Context) {
     },
   } = ctx
 
+  if (!ctx.req.headers.VtexIdclientAutCookie) {
+    throw new AuthenticationError('You must provide a VtexIdclientAutCookie')
+  }
+  const userToken = ctx.req.headers.VtexIdclientAutCookie as string
   const orderForm = await checkout.getOrderFormConfiguration()
 
   if (operation === 'activate') {
-    await activateProvider(orderForm, checkout, account, workspace)
+    await activateProvider(orderForm, checkout, account, workspace, userToken)
   } else if (operation === 'deactivate') {
-    await deactivateProvider(orderForm, checkout)
+    await deactivateProvider(orderForm, checkout, userToken)
   } else {
-    ctx.status = 400
+    throw new UserInputError(
+      "operation must be either 'activate' or 'deactivate'"
+    )
   }
   ctx.status = 200
   ctx.body = 'Tax configuration has been changed'

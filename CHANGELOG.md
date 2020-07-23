@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.1.3] - 2020-07-23
 ### Fixed
+- Adding user token to be used on the settings handler
+
+### Fixed
 - Added missing fields on the Checkout Request interface
 ### Changed
 - Updated README with a more complete request body example
