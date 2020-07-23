@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Fixed
 - Added missing fields on the Checkout Request interface
+### Changed
+- Updated README with a more complete request body example
 
 ## [0.1.2] - 2020-07-09
 ### Added

@@ -18,7 +18,7 @@ interface Item {
   id: string
   sku: string
   ean: string
-  refId: string
+  refId: string | null
   unitMultiplier: number
   measurementUnit: string
   targetPrice: number
@@ -32,6 +32,9 @@ interface Item {
 
 interface Client {
   email: string
+  document: string
+  corporateDocument: string | null
+  stateInscription: string | null
 }
 
 interface Total {
@@ -42,10 +45,10 @@ interface Total {
 
 interface Payment {
   paumentSystem: string
-  bin: string
+  bin: string | null
   referenceValue: number
   value: number
-  installments?: number
+  installments: number | null
 }
 
 interface ShippingInformation {
