@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
+- Changed route privacy in order to get the correct token from the header
+
+### Added
+- Information on README regarding how to configure the tax integration
+
+## [0.1.4] - 2020-07-23
+
+## [0.1.3] - 2020-07-23
+### Fixed
 - Adding user token to be used on the settings handler
 
 ### Fixed
@@ -22,3 +31,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Updated README with more accurate information
 
 ## [0.1.0] - 2020-07-07
+

@@ -19,10 +19,10 @@ export async function settings(ctx: Context) {
     },
   } = ctx
 
-  if (!ctx.req.headers.VtexIdclientAutCookie) {
+  if (!ctx.req.headers.vtexidclientautcookie) {
     throw new AuthenticationError('You must provide a VtexIdclientAutCookie')
   }
-  const userToken = ctx.req.headers.VtexIdclientAutCookie as string
+  const userToken = ctx.req.headers.vtexidclientautcookie as string
   const orderForm = await checkout.getOrderFormConfiguration()
 
   if (operation === 'activate') {
