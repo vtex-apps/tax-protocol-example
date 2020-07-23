@@ -23,30 +23,73 @@ The provider API will receive a HTTP post request with a well-defined body from 
 An example of the body sent in the checkout post request is:
 ```json
 {
-  "items":
-  [
+  "orderFormId": "e5098ad8c4jk490bb2f6f03400ac1413",
+  "salesChannel": "1",
+  "items": [
     {
-      "id":"0",
-      "sku":"1",
-      "itemPrice":10,
-      "discountPrice": null,
-      "dockId": "1",
-      "freightPrice": 12
+      "id": "0",
+      "sku": "26",
+      "ean": "12345678909123",
+      "refId": null,
+      "unitMultiplier": 1,
+      "measurementUnit": "un",
+      "targetPrice": 8.2,
+      "itemPrice": 8.2,
+      "quantity": 1,
+      "discountPrice": 0,
+      "dockId": "1125a08",
+      "freightPrice": 0,
+      "brandId": "2000002"
     }
   ],
+  "totals": [
+    {
+      "id": "Items",
+      "name": "Items Total",
+      "value": 820
+    },
+    {
+      "id": "Discounts",
+      "name": "Discounts Total",
+      "value": 0
+    },
+    {
+      "id": "Shipping",
+      "name": "Shipping Total",
+      "value": 0
+    },
+    {
+      "id": "Tax",
+      "name": "Tax Total",
+      "value": 0
+    }
+  ],
+  "clientEmail": "client@email.com",
+  "shippingDestination": {
+    "country": "BRA",
+    "state": "RJ",
+    "city": "Rio de Janeiro",
+    "neighborhood": "Botafogo",
+    "postalCode": "22250-905",
+    "street": "Praia Botafogo"
+  },
   "clientData": {
-    "email": "afonso.praca@vtex.com.br"
+    "email": "client@email.com",
+    "document": "12345678909",
+    "corporateDocument": null,
+    "stateInscription": null
   },
-  "shippingDestination":
-  {
-    "country":"USA",
-    "state":"IL",
-    "city":"Chicago",
-    "neighborhood":"North Water St",
-    "street": "4931 E North Water St",
-    "postalCode": "60621"
-  },
-  "orderFormId":"4ab546272a9b4087b56f62f6438f20aa"
+  "paymentData": {
+    "payments": [
+      {
+        "paymentSystem": "2",
+        "bin": null,
+        "referenceValue": 820,
+        "value": 820,
+        "installments": null
+      }
+    ]
+  }
 }
 ```
 
