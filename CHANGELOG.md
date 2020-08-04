@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
+- Problem with authorization token
+
+### Added
+- GraphQL mutation ready to be used on admin panels
+- GraphQL query to check current tax configuration
+
+### Fixed
 - Changed route privacy in order to get the correct token from the header
 
 ### Added

@@ -18,18 +18,19 @@ export async function activateProvider(
   if (orderForm.taxConfiguration) {
     throw new UserInputError('Tax provider already configured')
   }
-  return checkout.setOrderFormConfiguration(
-    {
-      ...orderForm,
-      taxConfiguration: {
-        allowExecutionAfterErrors: false,
-        authorizationHeader: AUTHORIZATION_CODE,
-        integratedAuthentication: false,
-        url: `https://${workspace}--${account}.myvtex.com/app/tax-provider/checkout/simulation`,
-      },
+
+  const body = {
+    ...orderForm,
+    taxConfiguration: {
+      allowExecutionAfterErrors: false,
+      authorizationHeader: AUTHORIZATION_CODE,
+      integratedAuthentication: false,
+      url: `https://${workspace}--${account}.myvtex.com/app/tax-provider/checkout/simulation`,
     },
-    userToken
-  )
+  }
+  await checkout.setOrderFormConfiguration(body, userToken)
+
+  return body
 }
 
 export async function deactivateProvider(
@@ -40,16 +41,17 @@ export async function deactivateProvider(
   if (!orderForm.taxConfiguration) {
     throw new UserInputError('Tax provider is not configured')
   }
-  return checkout.setOrderFormConfiguration(
-    {
-      ...orderForm,
-      taxConfiguration: {
-        allowExecutionAfterErrors: false,
-        authorizationHeader: AUTHORIZATION_CODE,
-        integratedAuthentication: false,
-        url: null,
-      },
+
+  const body = {
+    ...orderForm,
+    taxConfiguration: {
+      allowExecutionAfterErrors: false,
+      authorizationHeader: AUTHORIZATION_CODE,
+      integratedAuthentication: false,
+      url: null,
     },
-    userToken
-  )
+  }
+  await checkout.setOrderFormConfiguration(body, userToken)
+
+  return body
 }

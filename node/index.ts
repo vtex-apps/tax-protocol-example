@@ -6,11 +6,12 @@ import {
   ServiceContext,
 } from '@vtex/api'
 
-import { Clients } from './clients/index'
+import { Clients } from './clients'
 import { orderInvoice } from './handlers/orderInvoice'
-import { settings } from './handlers/settings'
 import { taxSimulation } from './handlers/taxSimulation'
 import { validateCheckoutAuthorization } from './handlers/validateCheckoutAuthorization'
+import { getTaxConfiguration } from './resolvers/getTaxConfiguration'
+import { setTaxConfiguration } from './resolvers/setTaxConfiguration'
 
 const TIMEOUT_MS = 800
 
@@ -35,9 +36,18 @@ declare global {
 // It's possible to check the implementation of each handler in the handlers folder
 export default new Service<Clients, RecorderState, ParamsContext>({
   clients,
+  graphql: {
+    resolvers: {
+      Mutation: {
+        setTaxConfiguration,
+      },
+      Query: {
+        getTaxConfiguration,
+      },
+    },
+  },
   routes: {
     orderInvoice: [orderInvoice],
-    settings,
     taxSimulation: [validateCheckoutAuthorization, taxSimulation],
   },
 })
