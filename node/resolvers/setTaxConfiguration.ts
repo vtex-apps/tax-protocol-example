@@ -24,18 +24,10 @@ export async function setTaxConfiguration(
   const orderForm = await checkout.getOrderFormConfiguration()
 
   if (operation === 'activate') {
-    const body = await activateProvider(
-      orderForm,
-      checkout,
-      account,
-      workspace,
-      userToken
-    )
-    return body
+    return activateProvider(orderForm, checkout, account, workspace, userToken)
   }
   if (operation === 'deactivate') {
-    const body = await deactivateProvider(orderForm, checkout, userToken)
-    return body
+    return deactivateProvider(orderForm, checkout, userToken)
   }
   throw new UserInputError(
     "operation must be either 'activate' or 'deactivate'"
