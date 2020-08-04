@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - GraphQL mutation ready to be used on admin panels
 - GraphQL query to check current tax configuration
+- Catalog client to retrieve SKUs additional information
 
 ### Fixed
 - Changed route privacy in order to get the correct token from the header

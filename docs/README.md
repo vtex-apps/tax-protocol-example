@@ -9,6 +9,7 @@ This app is an example to be followed in order to develop a tax service integrat
 
 ## Clients
 In this example, there are a few clients implemented for you to use.
+- `Catalog`: can be used to retrieve information regarding produts, in case of needing more data besides those that come on the tax payload
 - `Checkout`: used to configure the tax service in the Checkout
 - `Logistics`: it has a single method that can be used to fetch information about docks.
 - `TaxProvider`: used to connect with the provider's external API.
