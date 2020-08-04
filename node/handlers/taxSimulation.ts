@@ -2,7 +2,7 @@ import { json } from 'co-body'
 
 import { parseProviderToVtex } from '../parsers/providerToVtex'
 import { parseVtexToProvider } from '../parsers/vtexToProvider'
-import { getInfoBySku } from '../utils/producstInformation'
+// import { getInfoBySku } from '../utils/producstInformation'
 
 /*
 This handler is responsible for receiving the request from the checkout,
@@ -24,7 +24,7 @@ export async function taxSimulation(
   } = ctx
 
   // Example of using Catalog Client to retrieve SKU information by ID
-  const productItems = await getInfoBySku(ctx, body)
+  // const productItems = await getInfoBySku(ctx, body)
 
   const orderInformation = parseVtexToProvider(body)
 

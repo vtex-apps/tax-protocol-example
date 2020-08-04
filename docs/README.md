@@ -144,7 +144,7 @@ Below you can find a mutation example that can be used to configure the tax inte
 
 ```graphql
 mutation setConfiguration ($operation: String) {
-  setupCheckout(operation: $operation) {
+  setTaxConfiguration(operation: $operation) {
     taxConfiguration {
       allowExecutionAfterErrors
       authorizationHeader
