@@ -1,7 +1,7 @@
 {
   "name": "tax-protocol-example",
   "vendor": "vtex",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "title": "Tax Protocol Example",
   "description": "Reference app for Tax Protocol Services",
   "mustUpdateAt": "2018-01-04",
