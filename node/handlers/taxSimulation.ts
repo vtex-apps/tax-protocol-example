@@ -2,6 +2,7 @@ import { json } from 'co-body'
 
 import { parseProviderToVtex } from '../parsers/providerToVtex'
 import { parseVtexToProvider } from '../parsers/vtexToProvider'
+// import { getInfoBySku } from '../utils/producstInformation'
 
 /*
 This handler is responsible for receiving the request from the checkout,
@@ -11,13 +12,19 @@ the method that uses the provider API. It will give a response with the
 taxes information. With that, it's necessary to parse it again to the
 format that VTEX expects and this will be assigned to the body
 */
-export async function taxSimulation(ctx: Context, next: () => Promise<any>) {
-  const body = await json(ctx.req)
+export async function taxSimulation(
+  ctx: Context,
+  next: () => Promise<unknown>
+) {
+  const body: CheckoutRequest = await json(ctx.req)
 
   const {
     vtex: { workspace, account },
     clients: { taxProvider },
   } = ctx
+
+  // Example of using Catalog Client to retrieve SKU information by ID
+  // const productItems = await getInfoBySku(ctx, body)
 
   const orderInformation = parseVtexToProvider(body)
 

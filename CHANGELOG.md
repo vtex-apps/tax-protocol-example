@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Problem with authorization token
+
+### Added
+- GraphQL mutation ready to be used on admin panels
+- GraphQL query to check current tax configuration
+- Catalog client to retrieve SKUs additional information
+
+### Fixed
+- Changed route privacy in order to get the correct token from the header
+
+### Added
+- Information on README regarding how to configure the tax integration
 
 ## [0.1.4] - 2020-07-23
 
@@ -26,3 +39,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Updated README with more accurate information
 
 ## [0.1.0] - 2020-07-07
+

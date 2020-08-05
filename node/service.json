@@ -11,10 +11,6 @@
     "orderInvoice": {
       "path": "/app/tax-provider/oms/invoice",
       "public": true
-    },
-    "settings": {
-      "path": "/app/tax-provider/checkout/settings/:operation",
-      "public": true
     }
   }
 }

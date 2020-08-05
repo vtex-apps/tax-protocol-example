@@ -9,6 +9,7 @@ This app is an example to be followed in order to develop a tax service integrat
 
 ## Clients
 In this example, there are a few clients implemented for you to use.
+- `Catalog`: can be used to retrieve information regarding produts, in case of needing more data besides those that come on the tax payload
 - `Checkout`: used to configure the tax service in the Checkout
 - `Logistics`: it has a single method that can be used to fetch information about docks.
 - `TaxProvider`: used to connect with the provider's external API.
@@ -124,16 +125,52 @@ Considering the request done by the provider to the VTEX Checkout API, it's also
 }
 ```
 
-## Routes
-There are three main routes in this example and they are mainly using mocked values so as to simulate their functions.
+## GraphQL queries and mutations
+Both have resolvers that can be tested on GraphiQL. They use the `Checkout` client in order to do POST or GET HTTP requests regarding the Order Form Configuration.
 
-It is important to emphasize that for the first two endpoints to work, you **must** have the tax service configured in your account, which can be done by using the third endpoint explained below.
+### `getTaxConfiguration` query
+Responsible to fetch information regarding the Tax Configuration of an account, its resolver makes a GET request to `Checkout` and get the Order Form configuration.
+
+### `setTaxConfiguration` mutation
+It expects a parameter, which can be `activate` or `deactivate` and it does a POST HTTP request to set the Tax Configuration on the Order Form Configuration. In order to do so, it uses a `Checkout` client. 
+
+Having it ready is useful for those integration that need a admin panel to configure the tax service, since it's possible to use React Hooks in order to call the mutation.
+
+## Using GraphiQL to configure the tax service on an account
+
+In order to test the integration, it's necessary configure the integration on desired account. In order to do so, you can use the GraphiQL route that is available when linking the application to write the necessary mutation.
+
+Below you can find a mutation example that can be used to configure the tax integration. It's been written and executed on the GraphiQL route that is available when linking the app.
+
+```graphql
+mutation setConfiguration ($operation: String) {
+  setTaxConfiguration(operation: $operation) {
+    taxConfiguration {
+      allowExecutionAfterErrors
+      authorizationHeader
+      integratedAuthentication
+      url
+    }
+  }
+}
+```
+> Note: `$operation` is a query variable that is configured on the GraphiQL, the GraphQL IDE.
+
+You can find an image of GraphiQL below:
+
+![image](https://user-images.githubusercontent.com/19495917/89305970-a9ea1800-d645-11ea-9131-cab6efd34cf8.png)
+
+
+## Routes
+There are two main routes in this example and they are mainly using mocked values so as to simulate their functions.
+
+It is important to emphasize that for the first two endpoints to work, you **must** have the tax service configured in your account, which can be done by using GraphiQL, as it was explained in the previous step.
 
 - `taxSimulation`: responsible for simulating a Checkout request for tax calculation.
 - `orderInvoice`: public route to send the taxes.
-- `settings`: a private route that is responsible for configurating a tax service in a specific account. 
-  > It expects to receive an operation name, which can be `activate` or `deactivate`.
 
-If you want to test your those routes, it is possible to use this [Postman collection](https://www.getpostman.com/collections/6321a1b18cde612dc027).
+## Testing the example app
+
+After having the integration properly configured, you can test those routes using this [Postman collection](https://www.getpostman.com/collections/3b2ee13b0cbba50e0809).
 
 > **Attention!** The authorization header that it's present in the Postman collection is a mocked value to be correctly validated by the handlers. This value is defined in the `utils/constants.ts` file and it's used to configure the tax service when calling the `settings` endpoint.

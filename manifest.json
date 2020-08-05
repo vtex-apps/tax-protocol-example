@@ -1,13 +1,14 @@
 {
   "name": "tax-protocol-example",
   "vendor": "vtex",
-  "version": "0.1.4",
+  "version": "0.1.2",
   "title": "Tax Protocol Example",
   "description": "Reference app for Tax Protocol Services",
   "mustUpdateAt": "2018-01-04",
   "categories": [],
   "dependencies": {},
   "builders": {
+    "graphql": "1.x",
     "node": "6.x",
     "docs": "0.x"
   },
@@ -31,6 +32,13 @@
       "attrs": {
         "host": "api.vtex.com",
         "path": "/api/logistics/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "api.vtex.com",
+        "path": "/api/catalog/*"
       }
     }
   ],
