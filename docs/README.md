@@ -174,3 +174,8 @@ It is important to emphasize that for the first two endpoints to work, you **mus
 After having the integration properly configured, you can test those routes using this [Postman collection](https://www.getpostman.com/collections/3b2ee13b0cbba50e0809).
 
 > **Attention!** The authorization header that it's present in the Postman collection is a mocked value to be correctly validated by the handlers. This value is defined in the `utils/constants.ts` file and it's used to configure the tax service when calling the `settings` endpoint.
+
+
+**Upcoming documentation:**
+
+ - [Fixing problem with dependency](https://github.com/vtex-apps/tax-protocol-example/pull/9)
