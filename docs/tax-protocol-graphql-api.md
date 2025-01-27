@@ -204,7 +204,7 @@ classDiagram
       <td valign="top">
         Boolean
       </td>
-      <td>Allows the selection of items from several delivery channels in the same purchase.</td>
+      <td>Enables multiple delivery options in a single purchase.</td>
     </tr>
     <tr>
       <td colspan="2" valign="top">
@@ -222,7 +222,7 @@ classDiagram
       <td valign="top">
         Int
       </td>
-      <td>Allows the input of a limit of white label sellers involved on the cart.</td>
+      <td>Maximum number of white-label sellers allowed in the cart.</td>
     </tr>
     <tr>
       <td colspan="2" valign="top">
@@ -231,7 +231,7 @@ classDiagram
       <td valign="top">
         Boolean
       </td>
-      <td>Allows, on a first purchase, masking client's data. It could be useful when a shared cart is used and the client doesn't want to share its data.</td>
+      <td>Masks customer data for first-time purchases. It could be useful when a shared cart is used, and the client doesn't want to share its data.</td>
     </tr>
     <tr>
       <td colspan="2" valign="top">
