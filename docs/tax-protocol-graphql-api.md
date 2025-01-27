@@ -2,7 +2,7 @@
 
 This API enables setting and retrieving the Tax Configuration, which is part of the [OrderForm configuration](https://developers.vtex.com/docs/guides/get-an-account-orderform-configuration), for the Tax Service.
 
-## Schema Overview
+## Schema overview
 
 ### Query
 
