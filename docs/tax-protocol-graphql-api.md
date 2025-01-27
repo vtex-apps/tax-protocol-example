@@ -130,7 +130,7 @@ classDiagram
 
 ## Schema description
 
->⚠️ Arguments must be provided by the user. The exclamation mark `!` indicates that a type cannot be nullable.
+>⚠️ Arguments must be provided by the user. Required fields are marked with an exclamation mark (`!`).
 
 ### OrderFormConfiguration
 
