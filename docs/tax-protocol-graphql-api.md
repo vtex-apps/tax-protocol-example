@@ -4,7 +4,7 @@ This API enables setting and retrieving the Tax Configuration, which is part of 
 
 ## Schema Overview
 
-## Query
+### Query
 
 ```mermaid
 classDiagram
