@@ -118,7 +118,7 @@ classDiagram
       <td valign="top">
         <a href="#orderformconfiguration">OrderFormConfiguration</a>
       </td>
-      <td>Endpoint responsible for activating and deactivating the tax service on the <a href="https://developers.vtex.com/docs/guides/update-an-account-orderform-configuration" target="_blank">OrderForm configuration</a>. It does a POST HTTP request (<a href="https://developers.vtex.com/docs/api-reference/checkout-api#post-/api/checkout/pvt/configuration/orderForm" target="_blank">Update orderForm configuration</a>) to set the Tax Configuration on the OrderForm Configuration. In order to do so, it uses a Checkout <a href="https://developers.vtex.com/docs/guides/vtex-io-documentation-clients" target="_blank">client</a>.</td>
+      <td>Activates or deactivates the tax service in the <a href="https://developers.vtex.com/docs/guides/update-an-account-orderform-configuration" target="_blank">orderForm configuration</a> using the (<a href="https://developers.vtex.com/docs/api-reference/checkout-api#post-/api/checkout/pvt/configuration/orderForm" target="_blank">Update orderForm configuration</a>) endpoint.</td>
     </tr>
     <tr>
       <td colspan="2" align="right" valign="top">operation</td>
