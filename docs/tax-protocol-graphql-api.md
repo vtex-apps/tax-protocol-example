@@ -179,7 +179,7 @@ classDiagram
       <td valign="top">
         Int
       </td>
-      <td>Number of price digits.</td>
+      <td>Number of decimal price digits.</td>
     </tr>
     <tr>
       <td colspan="2" valign="top">
