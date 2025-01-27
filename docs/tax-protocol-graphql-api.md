@@ -41,7 +41,7 @@ classDiagram
         <strong id="query.gettaxconfiguration">getTaxConfiguration</strong>
       </td>
       <td valign="top"><a href="#taxconfiguration">TaxConfiguration</a></td>
-      <td>Endpoint responsible to fetch information regarding the Tax Configuration of an account. Its resolver makes a GET request to <code>Checkout</code> (<a href="https://developers.vtex.com/docs/api-reference/checkout-api#get-/api/checkout/pvt/configuration/orderForm" target="_blank">Get orderForm configuration</a>) and retrieves the Tax Configuration from the OrderForm Configuration.</td>
+      <td>Retrieves the tax configuration for an account from the orderForm using the Checkout API (<a href="https://developers.vtex.com/docs/api-reference/checkout-api#get-/api/checkout/pvt/configuration/orderForm" target="_blank">Get orderForm configuration</a>).</td>
     </tr>
   </tbody>
 </table>
