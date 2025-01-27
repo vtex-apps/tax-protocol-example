@@ -128,7 +128,7 @@ classDiagram
   </tbody>
 </table>
 
-## Schema Description
+## Schema description
 
 >⚠️ Arguments must be provided by the user. The exclamation mark `!` indicates that a type cannot be nullable.
 
