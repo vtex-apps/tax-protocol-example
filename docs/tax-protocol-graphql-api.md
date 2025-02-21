@@ -1,6 +1,6 @@
 # Tax Protocol GraphQL API
 
-This API enables setting and retrieving the Tax Configuration, which is part of the [OrderForm configuration](https://developers.vtex.com/docs/guides/get-an-account-orderform-configuration), for the Tax Service.
+This API allows setting and retrieving the Tax Configuration, which is part of the [OrderForm configuration](https://developers.vtex.com/docs/guides/get-an-account-orderform-configuration) for the Tax Service.
 
 ## Schema overview
 
@@ -41,7 +41,7 @@ classDiagram
         <strong id="query.gettaxconfiguration">getTaxConfiguration</strong>
       </td>
       <td valign="top"><a href="#taxconfiguration">TaxConfiguration</a></td>
-      <td>Retrieves the tax configuration for an account from the orderForm using the Checkout API (<a href="https://developers.vtex.com/docs/api-reference/checkout-api#get-/api/checkout/pvt/configuration/orderForm" target="_blank">Get orderForm configuration</a>).</td>
+      <td>Retrieves the tax configuration of an account from the orderForm using the Checkout API (<a href="https://developers.vtex.com/docs/api-reference/checkout-api#get-/api/checkout/pvt/configuration/orderForm" target="_blank">Get orderForm configuration</a>).</td>
     </tr>
   </tbody>
 </table>
@@ -170,7 +170,7 @@ classDiagram
       <td valign="top">
         Int
       </td>
-      <td>Minimum SKU quantity by cart. This field is mandatory and must be sent in all requests.</td>
+      <td>Minimum SKU quantity per cart. This field is mandatory and must be sent in all requests.</td>
     </tr>
     <tr>
       <td colspan="2" valign="top">
@@ -188,14 +188,14 @@ classDiagram
       <td valign="top">
         Int
       </td>
-      <td>Minimum cart value.</td>
+      <td>Minimum cart total.</td>
     </tr>
     <tr>
       <td colspan="2" valign="top">
         <strong id="orderformconfiguration.apps">apps</strong>
       </td>
       <td valign="top">[<a href="#app">App</a>]</td>
-      <td>List of App objects, where each object has an app configuration information. See an example with the <code>apps</code> list in the <a href="https://developers.vtex.com/docs/guides/get-an-account-orderform-configuration" target="_blank">Get orderForm configuration</a> response body.</td>
+      <td>List of App objects, where each object has a piece of app configuration information. You can see an example with the <code>apps</code> list in the <a href="https://developers.vtex.com/docs/guides/get-an-account-orderform-configuration" target="_blank">Get orderForm configuration</a> response body.</td>
     </tr>
     <tr>
       <td colspan="2" valign="top">
@@ -213,7 +213,7 @@ classDiagram
       <td valign="top">
         Boolean
       </td>
-      <td>Allows the editing of SKU prices directly in the cart.</td>
+      <td>Allows editing SKU prices directly in the cart.</td>
     </tr>
     <tr>
       <td colspan="2" valign="top">
@@ -222,7 +222,7 @@ classDiagram
       <td valign="top">
         Int
       </td>
-      <td>Maximum number of white-label sellers allowed in the cart.</td>
+      <td>Maximum number of white label sellers allowed in the cart.</td>
     </tr>
     <tr>
       <td colspan="2" valign="top">
@@ -231,7 +231,7 @@ classDiagram
       <td valign="top">
         Boolean
       </td>
-      <td>Masks customer data for first-time purchases. It could be useful when a shared cart is used, and the client doesn't want to share its data.</td>
+      <td>Masks customer data for first-time purchases. This can be useful when using a shared cart and the customer doesn't want to share their data.</td>
     </tr>
     <tr>
       <td colspan="2" valign="top">
@@ -316,7 +316,7 @@ classDiagram
       <td valign="top">
         Boolean
       </td>
-      <td>By default (when <code>false</code>), on a multi-seller purchase is on the run, a simple intersection with installments options configured by every seller will be available. When <code>true</code>, this option allows a more complex but flexible installment option, since it considers max installments of every seller configuration, even if those don't match. Installment values ​​may not be equal in this case.</td>
+      <td>The default when this is <code>false</code> and a multi-seller purchase is in progress is to simply show the installment options that are common to all sellers. When <code>true</code>, this option allows a more complex but flexible installment option configuration taking into account the installment maximum of every seller, even if they don't match. Installment values ​​don't need to be equal in this case.</td>
     </tr>
     <tr>
       <td colspan="2" valign="top">
@@ -325,7 +325,7 @@ classDiagram
       <td valign="top">
         Boolean
       </td>
-      <td>Indicates whether shoppers can add credit cards in your store's <a href="https://developers.vtex.com/docs/apps/vtex.my-account" target="_blank">My Account</a> section.</td>
+      <td>Indicates whether shoppers can add credit cards in the store's <a href="https://developers.vtex.com/docs/apps/vtex.my-account" target="_blank">My Account</a> section.</td>
     </tr>
     <tr>
       <td colspan="2" valign="top">
@@ -335,7 +335,7 @@ classDiagram
       <td valign="top">
         Boolean
       </td>
-      <td>If you want to apply a first installment discount to a particular payment system, set this field to that payment system's ID. Learn more: <a href="https://help.vtex.com/en/tutorial/configuring-a-discount-for-orders-prepaid-in-full--7Lfcj9Wb5dpYfA2gKkACIt" target="_blank">Configuring a discount for orders prepaid in full</a>.</td>
+      <td>If you want to apply a first-installment discount to a particular payment system, set this field to the ID of the payment system. Learn more in <a href="https://help.vtex.com/en/tutorial/configuring-a-discount-for-orders-prepaid-in-full--7Lfcj9Wb5dpYfA2gKkACIt" target="_blank">Configuring a discount for orders paid in full</a>.</td>
     </tr>
   </tbody>
 </table>
@@ -360,7 +360,7 @@ classDiagram
       <td valign="top">
         Boolean
       </td>
-      <td>Allows continuing with the purchase even on a tax system problem occurrence.</td>
+      <td>Allows proceeding with the purchase even when there's a tax system problem.</td>
     </tr>
     <tr>
       <td valign="top">
@@ -369,7 +369,7 @@ classDiagram
       <td valign="top">
         String
       </td>
-      <td>String that the Checkout will use in the <code>Authorization</code> header of calls to the external tax calculation API. This field can be used to define the access credentials for this API. Example: <code>"99b9935b048dfd86893d0bf9gas628849"</code>.</td>
+      <td>String that Checkout will use in the <code>Authorization</code> header of calls to the external tax calculation API. This field can be used to define the access credentials for this API. Example: <code>"99b9935b048dfd86893d0bf9gas628849"</code>.</td>
     </tr>
     <tr>
       <td valign="top">
@@ -378,7 +378,7 @@ classDiagram
       <td valign="top">
         Boolean
       </td>
-      <td>When <code>true</code>, tax system uses <a href="https://developers.vtex.com/docs/guides/authentication" target="_blank">VTEX auth</a>. When <code>false</code>, use <code>authorizationHeader</code> instead.</td>
+      <td>When <code>true</code>, the tax system will use <a href="https://developers.vtex.com/docs/guides/authentication" target="_blank">VTEX auth</a>. When <code>false</code>, it will use the <code>authorizationHeader</code> instead.</td>
     </tr>
     <tr>
       <td valign="top">
@@ -387,7 +387,7 @@ classDiagram
       <td valign="top">
         String
       </td>
-      <td>String of external API endpoint of the tax provider that the Checkout will query to receive the calculated taxes. Example: <code>"https://sandbox-rest.avatax.com/api/v2/transactions/create"</code>.</td>
+      <td>External API endpoint URL of the tax provider that Checkout will query to receive the calculated taxes. Example: <code>"https://sandbox-rest.avatax.com/api/v2/transactions/create"</code>.</td>
     </tr>
   </tbody>
 </table>
