@@ -164,8 +164,7 @@ classDiagram
     </tr>
     <tr>
       <td colspan="2" valign="top">
-        <strong id="orderformconfiguration.minimumquantityaccumulatedforitems">
-          minimumQuantityAccumulatedForItems</strong>
+        <strong id="orderformconfiguration.minimumquantityaccumulatedforitems">minimumQuantityAccumulatedForItems</strong>
       </td>
       <td valign="top">
         Int
@@ -301,8 +300,7 @@ classDiagram
   <tbody>
     <tr>
       <td colspan="2" valign="top">
-        <strong id="paymentconfiguration.requiresauthenticationforpreauthorizedpaymentoption">
-          requiresAuthenticationForPreAuthorizedPaymentOption</strong>
+        <strong id="paymentconfiguration.requiresauthenticationforpreauthorizedpaymentoption">requiresAuthenticationForPreAuthorizedPaymentOption</strong>
       </td>
       <td valign="top">
         Boolean
@@ -329,8 +327,7 @@ classDiagram
     </tr>
     <tr>
       <td colspan="2" valign="top">
-        <strong id="paymentconfiguration.paymentsystemtocheckfirstinstallment">
-          paymentSystemToCheckFirstInstallment</strong>
+        <strong id="paymentconfiguration.paymentsystemtocheckfirstinstallment">paymentSystemToCheckFirstInstallment</strong>
       </td>
       <td valign="top">
         Boolean
